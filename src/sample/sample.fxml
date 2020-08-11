@@ -6,10 +6,8 @@
 
 <VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
     <TextArea fx:id="mainTextArea" VBox.vgrow="ALWAYS" editable="false"/>
-    <children>
-        <HBox>
-            <TextField fx:id="messageArea" minHeight="30" minWidth="500" VBox.vgrow="ALWAYS" onAction="#enterPressed" />
-            <Button fx:id="sendButton" minHeight="30" minWidth="100" text="Send" onAction="#btnOneClickAction" />
-        </HBox>
-    </children>
+    <HBox>
+        <TextField fx:id="messageArea" minHeight="30" HBox.hgrow="ALWAYS" onAction="#enterPressed"/>
+        <Button fx:id="sendButton" minHeight="30" minWidth="100" text="Send" onAction="#clickAction"/>
+    </HBox>
 </VBox>

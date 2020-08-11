@@ -18,7 +18,7 @@ public class Controller {
     @FXML
     Button sendButton;
 
-    public void btnOneClickAction(ActionEvent actionEvent) {
+    public void clickAction(ActionEvent actionEvent) {
         if (!messageArea.getText().isEmpty()) {
             mainTextArea.appendText("Вы: " + messageArea.getText() + System.lineSeparator());
             messageArea.clear();
@@ -26,7 +26,7 @@ public class Controller {
     }
 
     public void enterPressed(ActionEvent actionEvent) {
-        btnOneClickAction(actionEvent);
+        clickAction(actionEvent);
     }
 
 
