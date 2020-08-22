@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
 
-<VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
-    <TextArea fx:id="mainTextArea" VBox.vgrow="ALWAYS" editable="false"/>
+<VBox fx:controller="client.sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
+    <TextArea style="-fx-background-color:#ff0000;" fx:id="mainTextArea" VBox.vgrow="ALWAYS" editable="false"/>
     <HBox>
         <TextField fx:id="messageArea" minHeight="30" HBox.hgrow="ALWAYS" onAction="#enterPressed"/>
         <Button fx:id="sendButton" minHeight="30" minWidth="100" text="Send" onAction="#clickAction"/>
