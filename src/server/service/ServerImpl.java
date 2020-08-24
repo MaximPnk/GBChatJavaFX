@@ -17,18 +17,18 @@ public class ServerImpl implements Server {
 
     public ServerImpl() {
         try {
-            ServerSocket serverSocket = new ServerSocket(8189);
+            ServerSocket serverSocket = new ServerSocket(PORT);
             authService = new AuthServiceImpl();
             authService.start();
             clients = new LinkedList<>();
             while (true) {
-                System.out.println("Wait join clients");
+                System.out.println("Waiting for clients");
                 Socket socket = serverSocket.accept();
                 System.out.println("Client join");
                 new ClientHandler(this, socket);
             }
         } catch (IOException e) {
-            System.out.println("Problem in server");
+            System.out.println("There are problems on the server");
         } finally {
             if (authService != null) {
                 authService.stop();

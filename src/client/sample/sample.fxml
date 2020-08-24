@@ -5,9 +5,14 @@
 <?import javafx.scene.control.TextField?>
 
 <VBox fx:controller="client.sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center">
-    <TextArea style="-fx-background-color:#ff0000;" fx:id="mainTextArea" VBox.vgrow="ALWAYS" editable="false"/>
-    <HBox>
-        <TextField fx:id="messageArea" minHeight="30" HBox.hgrow="ALWAYS" onAction="#enterPressed"/>
+    <HBox fx:id="logPassBox">
+        <TextField fx:id="loginArea" minHeight="30" minWidth="100" HBox.hgrow="ALWAYS" onAction="#loginAction" />
+        <TextField fx:id="passwordArea" minHeight="30" minWidth="100" HBox.hgrow="ALWAYS" onAction="#loginAction" />
+        <Button fx:id="loginButton" minHeight="30" minWidth="100" text="Auth" HBox.hgrow="ALWAYS" onAction="#loginAction"/>
+    </HBox>
+    <TextArea fx:id="mainTextArea" VBox.vgrow="ALWAYS" editable="false"/>
+    <HBox visible="false" fx:id="chatBox">
+        <TextField fx:id="messageArea" minHeight="30" HBox.hgrow="ALWAYS" onAction="#clickAction"/>
         <Button fx:id="sendButton" minHeight="30" minWidth="100" text="Send" onAction="#clickAction"/>
     </HBox>
 </VBox>

@@ -18,7 +18,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void start() {
-        System.out.println("Server is run");
+        System.out.println("Server run");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void stop() {
-        System.out.println("Сервис аутентификации остановлен");
+        System.out.println("Authentication service stopped");
 
     }
 
