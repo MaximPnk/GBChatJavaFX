@@ -7,6 +7,7 @@ import server.inter.Server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ServerImpl implements Server {
                 System.out.println("Client join");
                 new ClientHandler(this, socket);
             }
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             System.out.println("There are problems on the server");
         } finally {
             if (authService != null) {

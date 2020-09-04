@@ -104,6 +104,8 @@ public class ClientHandler {
                         for (ClientHandler c : server.clients) {
                             sendMsg(c.getNick());
                         }
+                    } else if (clientStr.startsWith("/changeNick") && clientStr.split("\\s").length == 2) {
+                        server.getAuthService().setNick(this.getNick(), clientStr.split("\\s")[1]);
                     } else {
                         sendMsg("Wrong command");
                     }
