@@ -105,7 +105,14 @@ public class ClientHandler {
                             sendMsg(c.getNick());
                         }
                     } else if (clientStr.startsWith("/changeNick") && clientStr.split("\\s").length == 2) {
+                        server.broadcastMsg(String.format("%s changed nick to %s", this.getNick(), clientStr.split("\\s")[1]));
                         server.getAuthService().setNick(this.getNick(), clientStr.split("\\s")[1]);
+                        server.changeNick(this.getNick(), clientStr.split("\\s")[1]);
+                    } else if (clientStr.equals("/commands")) {
+                        sendMsg("/w nick - whisper to smbd");
+                        sendMsg("/online - show who is online");
+                        sendMsg("/changeNick - change your nick");
+                        sendMsg("/exit - leave the chat");
                     } else {
                         sendMsg("Wrong command");
                     }
@@ -134,6 +141,10 @@ public class ClientHandler {
 
     public String getNick() {
         return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     private void closeConnection() {

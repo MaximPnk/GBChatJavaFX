@@ -64,6 +64,14 @@ public class ServerImpl implements Server {
         clients.remove(client);
     }
 
+    public synchronized void changeNick(String oldNick, String newNick) {
+        for (ClientHandler c : clients) {
+            if (oldNick.equalsIgnoreCase(c.getNick())) {
+                c.setNick(newNick);
+            }
+        }
+    }
+
     @Override
     public AuthService getAuthService() {
         return authService;

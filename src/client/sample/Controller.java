@@ -1,5 +1,6 @@
 package client.sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,10 +8,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Controller {
@@ -43,6 +47,7 @@ public class Controller {
     private DataInputStream dis;
     private DataOutputStream dos;
     private boolean isClosed;
+    private ArrayList<String> history;
 
     public void clickAction(ActionEvent actionEvent) {
         if (!messageArea.getText().trim().isEmpty()) {
@@ -88,6 +93,18 @@ public class Controller {
                             String strMsg = dis.readUTF();
                             if (strMsg.startsWith("/authOk")) {
                                 setAuth(true);
+                                history = new ArrayList<>();
+                                try (BufferedReader reader = new BufferedReader(new FileReader("src/client/resourses/History.txt"))) {
+                                    while (reader.ready()) {
+                                        history.add(reader.readLine());
+                                    }
+                                }
+                                if (history.size() > 100) {
+                                    Platform.runLater(() -> mainTextArea.setText(String.join("\n", history.subList(history.size()-100, history.size()-1)) + "\n\n" + "End of history" + "\n\n"));
+                                } else {
+                                    Platform.runLater(() -> mainTextArea.setText(String.join("\n", history.subList(0, history.size()-1)) + "\n\n" + "End of history" + "\n\n"));
+                                }
+                                mainTextArea.setScrollTop(Double.MIN_VALUE);
                                 break;
                             } else if (strMsg.equals("/disconnect")) {
                                 closeConnection();
@@ -101,7 +118,10 @@ public class Controller {
                         if (strMsg.equals("/exit")) {
                             break;
                         }
-                        mainTextArea.appendText(strMsg + "\n");
+                        mainTextArea.appendText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")) + " " + strMsg + "\n");
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/client/resourses/History.txt", true))) {
+                            writer.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss")) + " " + strMsg + "\n");
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
