@@ -102,7 +102,7 @@ public class Controller {
                                 if (history.size() > 100) {
                                     Platform.runLater(() -> mainTextArea.setText(String.join("\n", history.subList(history.size()-100, history.size()-1)) + "\n\n" + "End of history" + "\n\n"));
                                 } else {
-                                    Platform.runLater(() -> mainTextArea.setText(String.join("\n", history.subList(0, history.size()-1)) + "\n\n" + "End of history" + "\n\n"));
+                                    Platform.runLater(() -> mainTextArea.setText(String.join("\n", history) + "\n\n" + "End of history" + "\n\n"));
                                 }
                                 mainTextArea.setScrollTop(Double.MIN_VALUE);
                                 break;
@@ -118,9 +118,9 @@ public class Controller {
                         if (strMsg.equals("/exit")) {
                             break;
                         }
-                        mainTextArea.appendText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")) + " " + strMsg + "\n");
+                        mainTextArea.appendText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " " + strMsg + "\n");
                         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/client/resourses/History.txt", true))) {
-                            writer.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss")) + " " + strMsg + "\n");
+                            writer.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss")) + " " + strMsg + "\n");
                         }
                     }
                 } catch (IOException e) {

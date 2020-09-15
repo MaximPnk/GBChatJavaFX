@@ -5,6 +5,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ClientHandler {
 
@@ -24,7 +27,31 @@ public class ClientHandler {
             this.dis = new DataInputStream(socket.getInputStream());
             this.dos = new DataOutputStream(socket.getOutputStream());
             this.nick = "";
-            Thread connection = new Thread(() -> {
+            ExecutorService service = Executors.newCachedThreadPool();
+            service.execute(() -> {
+                try {
+                    authentication();
+                    readMessage();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    closeConnection();
+                }
+            });
+            service.execute(() -> {
+                try {
+                    Thread.sleep(10 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (getNick().equals("")) {
+                    sendMsg("Your connection closed due to timeout");
+                    sendMsg("/disconnect");
+                    service.shutdownNow();
+                    closeConnection();
+                }
+            });
+            /*Thread connection = new Thread(() -> {
                 try {
                     authentication();
                     readMessage();
@@ -47,7 +74,7 @@ public class ClientHandler {
                     connection.interrupt();
                     closeConnection();
                 }
-            }).start();
+            }).start();*/
         } catch (IOException e) {
             throw new RuntimeException("Problems with creating a client handler");
         }

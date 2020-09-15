@@ -11,7 +11,7 @@ public class DBConnection {
 
     private DBConnection() throws SQLException {
         String user = "root";
-        String password = "Max89035541493";
+        String password = "qaz123wsx";
 
         String jdbcURL = "jdbc:mysql://127.0.0.1:3306/test";
         connection = DriverManager.getConnection(jdbcURL, user, password);
