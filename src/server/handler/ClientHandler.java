@@ -40,7 +40,7 @@ public class ClientHandler {
             });
             service.execute(() -> {
                 try {
-                    Thread.sleep(10 * 1000);
+                    Thread.sleep(timeout * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
