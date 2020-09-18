@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class Controller {
@@ -94,7 +93,7 @@ public class Controller {
                             if (strMsg.startsWith("/authOk")) {
                                 setAuth(true);
                                 history = new ArrayList<>();
-                                try (BufferedReader reader = new BufferedReader(new FileReader("src/client/resourses/History.txt"))) {
+                                try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/History.txt"))) {
                                     while (reader.ready()) {
                                         history.add(reader.readLine());
                                     }
@@ -119,7 +118,7 @@ public class Controller {
                             break;
                         }
                         mainTextArea.appendText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + " " + strMsg + "\n");
-                        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/client/resourses/History.txt", true))) {
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/History.txt", true))) {
                             writer.write(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm:ss")) + " " + strMsg + "\n");
                         }
                     }

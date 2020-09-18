@@ -1,5 +1,7 @@
 package server.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import server.handler.ClientHandler;
 import server.inter.AuthService;
 import server.inter.Server;
@@ -13,6 +15,8 @@ import java.util.List;
 
 public class ServerImpl implements Server {
 
+    public static final Logger LOGGER = LogManager.getLogger(ServerImpl.class);
+
     public List<ClientHandler> clients;
     private AuthService authService;
 
@@ -22,14 +26,15 @@ public class ServerImpl implements Server {
             authService = new AuthServiceImpl();
             authService.start();
             clients = new LinkedList<>();
+            LOGGER.info("Server starting normal");
             while (true) {
-                System.out.println("Waiting for clients");
+                LOGGER.info("Waiting for clients");
                 Socket socket = serverSocket.accept();
-                System.out.println("Client join");
+                LOGGER.info("Client join");
                 new ClientHandler(this, socket);
             }
         } catch (IOException | SQLException e) {
-            System.out.println("There are problems on the server");
+            LOGGER.warn("There are problems on the server");
         } finally {
             if (authService != null) {
                 authService.stop();

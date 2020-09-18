@@ -1,0 +1,42 @@
+INFO  2020-09-18 16:33:40 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:33:40 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:33:52 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:33:52 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:36:57 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:36:57 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:37:42 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:37:42 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:38:09 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:38:09 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:41:50 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:41:50 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:41:57 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:41:57 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:42:45 [main] server.ChatApp (ChatApp.java:13) - asd
+INFO  2020-09-18 16:42:46 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:53:44 [main] server.ChatApp (ChatApp.java:13) - Application started
+INFO  2020-09-18 16:53:44 [main] server.service.AuthServiceImpl (AuthServiceImpl.java:39) - Server run
+INFO  2020-09-18 16:53:44 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:53:44 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:53:58 [main] server.service.ServerImpl (ServerImpl.java:33) - Client join
+INFO  2020-09-18 16:53:58 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:54:03 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: asd
+INFO  2020-09-18 16:54:11 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: asdasdasd
+INFO  2020-09-18 16:54:13 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:117) - Max closed chat and disconnected
+INFO  2020-09-18 16:54:34 [main] server.ChatApp (ChatApp.java:13) - Application started
+INFO  2020-09-18 16:54:34 [main] server.service.AuthServiceImpl (AuthServiceImpl.java:39) - Server run
+INFO  2020-09-18 16:54:34 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:54:34 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:54:49 [main] server.service.ServerImpl (ServerImpl.java:33) - Client join
+INFO  2020-09-18 16:54:49 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:54:51 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: asd
+INFO  2020-09-18 16:54:53 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: dsa
+INFO  2020-09-18 16:55:03 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: s
+INFO  2020-09-18 16:57:20 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:117) - Max closed chat and disconnected
+INFO  2020-09-18 16:57:51 [main] server.ChatApp (ChatApp.java:13) - Application started
+INFO  2020-09-18 16:57:51 [main] server.service.AuthServiceImpl (AuthServiceImpl.java:39) - Server run
+INFO  2020-09-18 16:57:51 [main] server.service.ServerImpl (ServerImpl.java:29) - Server starting normal
+INFO  2020-09-18 16:57:51 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:58:44 [main] server.service.ServerImpl (ServerImpl.java:33) - Client join
+INFO  2020-09-18 16:58:44 [main] server.service.ServerImpl (ServerImpl.java:31) - Waiting for clients
+INFO  2020-09-18 16:58:52 [pool-2-thread-1] server.handler.ClientHandler (ClientHandler.java:125) - from Max: asd

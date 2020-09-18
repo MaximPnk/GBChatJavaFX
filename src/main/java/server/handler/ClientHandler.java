@@ -1,5 +1,8 @@
 package server.handler;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import server.service.AuthServiceImpl;
 import server.service.ServerImpl;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,6 +14,7 @@ import java.util.concurrent.Executors;
 
 public class ClientHandler {
 
+    private static final Logger LOGGER = LogManager.getLogger(AuthServiceImpl.class);
     private ServerImpl server;
     private Socket socket;
     private DataInputStream dis;
@@ -76,6 +80,7 @@ public class ClientHandler {
                 }
             }).start();*/
         } catch (IOException e) {
+            LOGGER.error("Problems with creating a client handler");
             throw new RuntimeException("Problems with creating a client handler");
         }
     }
@@ -109,7 +114,7 @@ public class ClientHandler {
         try {
             dos.writeUTF(msg);
         } catch (IOException e) {
-            System.out.println(nick + " closed chat and disconnected");
+            LOGGER.info(nick + " closed chat and disconnected");
         }
     }
 
@@ -117,7 +122,7 @@ public class ClientHandler {
         try {
             while (true) {
                 String clientStr = dis.readUTF();
-                System.out.println("from " + this.nick + ": " + clientStr);
+                LOGGER.info("from " + this.nick + ": " + clientStr);
 
                 if (clientStr.startsWith("/")) {
                     if (clientStr.startsWith("/w") && clientStr.split("\\s").length > 2) {

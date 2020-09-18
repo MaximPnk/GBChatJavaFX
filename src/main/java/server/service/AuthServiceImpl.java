@@ -1,5 +1,7 @@
 package server.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import server.db.DBConnection;
 import server.handler.ClientHandler;
 import server.inter.AuthService;
@@ -11,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AuthServiceImpl implements AuthService {
+    private static final Logger LOGGER = LogManager.getLogger(AuthServiceImpl.class);
     PreparedStatement ps;
 
     public List<UserEntity> usersList;
@@ -33,7 +36,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void start() {
-        System.out.println("Server run");
+        LOGGER.info("Server run");
     }
 
     @Override
@@ -63,13 +66,14 @@ public class AuthServiceImpl implements AuthService {
             ps.setString(2, oldNick);
             ps.executeUpdate();
         } catch (SQLException throwables) {
+            LOGGER.error("Some problems with SQL connection");
             throwables.printStackTrace();
         }
     }
 
     @Override
     public void stop() {
-        System.out.println("Authentication service stopped");
+        LOGGER.info("Authentication service stopped");
 
     }
 
